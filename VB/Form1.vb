@@ -14,12 +14,9 @@ Namespace WindowsApplication87
 		Inherits System.Windows.Forms.Form
 		Private gridControl1 As DevExpress.XtraGrid.GridControl
 		Private WithEvents gridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-		Private sqlDataAdapter1 As System.Data.SqlClient.SqlDataAdapter
-		Private sqlSelectCommand1 As System.Data.SqlClient.SqlCommand
-		Private sqlConnection1 As System.Data.SqlClient.SqlConnection
-		Private dataSet11 As WindowsApplication87.DataSet1
 		Private cardView1 As DevExpress.XtraGrid.Views.Card.CardView
-		Private colCompanyName As DevExpress.XtraGrid.Columns.GridColumn
+		Private gridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
+
 		''' <summary>
 		''' Required designer variable.
 		''' </summary>
@@ -55,32 +52,23 @@ Namespace WindowsApplication87
 		''' </summary>
 		Private Sub InitializeComponent()
 			Dim gridLevelNode1 As New DevExpress.XtraGrid.GridLevelNode()
-			Dim configurationAppSettings As New System.Configuration.AppSettingsReader()
 			Me.cardView1 = New DevExpress.XtraGrid.Views.Card.CardView()
 			Me.gridControl1 = New DevExpress.XtraGrid.GridControl()
-			Me.dataSet11 = New WindowsApplication87.DataSet1()
 			Me.gridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-			Me.colCompanyName = New DevExpress.XtraGrid.Columns.GridColumn()
-			Me.sqlDataAdapter1 = New System.Data.SqlClient.SqlDataAdapter()
-			Me.sqlSelectCommand1 = New System.Data.SqlClient.SqlCommand()
-			Me.sqlConnection1 = New System.Data.SqlClient.SqlConnection()
+			Me.gridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
 			CType(Me.cardView1, System.ComponentModel.ISupportInitialize).BeginInit()
 			CType(Me.gridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-			CType(Me.dataSet11, System.ComponentModel.ISupportInitialize).BeginInit()
 			CType(Me.gridView1, System.ComponentModel.ISupportInitialize).BeginInit()
 			Me.SuspendLayout()
 			' 
 			' cardView1
 			' 
-			Me.cardView1.FocusedCardTopFieldIndex = 0
 			Me.cardView1.GridControl = Me.gridControl1
 			Me.cardView1.Name = "cardView1"
 			' 
 			' gridControl1
 			' 
-			Me.gridControl1.DataSource = Me.dataSet11.Customers
 			Me.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill
-			Me.gridControl1.EmbeddedNavigator.Name = ""
 			gridLevelNode1.LevelTemplate = Me.cardView1
 			gridLevelNode1.RelationName = "Details"
 			Me.gridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() { gridLevelNode1})
@@ -91,45 +79,24 @@ Namespace WindowsApplication87
 			Me.gridControl1.TabIndex = 0
 			Me.gridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() { Me.gridView1, Me.cardView1})
 			' 
-			' dataSet11
-			' 
-			Me.dataSet11.DataSetName = "DataSet1"
-			Me.dataSet11.Locale = New System.Globalization.CultureInfo("en-US")
-			Me.dataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-			' 
 			' gridView1
 			' 
-			Me.gridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() { Me.colCompanyName})
+			Me.gridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() { Me.gridColumn1})
 			Me.gridView1.GridControl = Me.gridControl1
 			Me.gridView1.Name = "gridView1"
 			Me.gridView1.OptionsDetail.ShowDetailTabs = False
-'			Me.gridView1.MasterRowGetLevelDefaultView += New DevExpress.XtraGrid.Views.Grid.MasterRowGetLevelDefaultViewEventHandler(Me.gridView1_MasterRowGetLevelDefaultView);
 '			Me.gridView1.MasterRowEmpty += New DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventHandler(Me.gridView1_MasterRowEmpty);
+'			Me.gridView1.MasterRowGetLevelDefaultView += New DevExpress.XtraGrid.Views.Grid.MasterRowGetLevelDefaultViewEventHandler(Me.gridView1_MasterRowGetLevelDefaultView);
 '			Me.gridView1.MasterRowGetChildList += New DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventHandler(Me.gridView1_MasterRowGetChildList);
 '			Me.gridView1.MasterRowGetRelationCount += New DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventHandler(Me.gridView1_MasterRowGetRelationCount);
 			' 
-			' colCompanyName
+			' gridColumn1
 			' 
-			Me.colCompanyName.Caption = "CompanyName"
-			Me.colCompanyName.FieldName = "CompanyName"
-			Me.colCompanyName.Name = "colCompanyName"
-			Me.colCompanyName.Visible = True
-			Me.colCompanyName.VisibleIndex = 0
-			' 
-			' sqlDataAdapter1
-			' 
-			Me.sqlDataAdapter1.SelectCommand = Me.sqlSelectCommand1
-			Me.sqlDataAdapter1.TableMappings.AddRange(New System.Data.Common.DataTableMapping() { New System.Data.Common.DataTableMapping("Table", "Customers", New System.Data.Common.DataColumnMapping() { New System.Data.Common.DataColumnMapping("CustomerID", "CustomerID"), New System.Data.Common.DataColumnMapping("CompanyName", "CompanyName"), New System.Data.Common.DataColumnMapping("ContactName", "ContactName"), New System.Data.Common.DataColumnMapping("ContactTitle", "ContactTitle"), New System.Data.Common.DataColumnMapping("Address", "Address"), New System.Data.Common.DataColumnMapping("City", "City"), New System.Data.Common.DataColumnMapping("Region", "Region"), New System.Data.Common.DataColumnMapping("PostalCode", "PostalCode"), New System.Data.Common.DataColumnMapping("Country", "Country"), New System.Data.Common.DataColumnMapping("Phone", "Phone"), New System.Data.Common.DataColumnMapping("Fax", "Fax")})})
-			' 
-			' sqlSelectCommand1
-			' 
-			Me.sqlSelectCommand1.CommandText = "SELECT CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Region," & " PostalCode, Country, Phone, Fax FROM Customers"
-			Me.sqlSelectCommand1.Connection = Me.sqlConnection1
-			' 
-			' sqlConnection1
-			' 
-			Me.sqlConnection1.ConnectionString = (CStr(configurationAppSettings.GetValue("sqlConnection1.ConnectionString", GetType(String))))
-			Me.sqlConnection1.FireInfoMessageEventOnUserErrors = False
+			Me.gridColumn1.Caption = "gridColumn1"
+			Me.gridColumn1.FieldName = "ID"
+			Me.gridColumn1.Name = "gridColumn1"
+			Me.gridColumn1.Visible = True
+			Me.gridColumn1.VisibleIndex = 0
 			' 
 			' Form1
 			' 
@@ -141,7 +108,6 @@ Namespace WindowsApplication87
 '			Me.Load += New System.EventHandler(Me.Form1_Load);
 			CType(Me.cardView1, System.ComponentModel.ISupportInitialize).EndInit()
 			CType(Me.gridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-			CType(Me.dataSet11, System.ComponentModel.ISupportInitialize).EndInit()
 			CType(Me.gridView1, System.ComponentModel.ISupportInitialize).EndInit()
 			Me.ResumeLayout(False)
 
@@ -156,9 +122,22 @@ Namespace WindowsApplication87
 			Application.Run(New Form1())
 		End Sub
 
+		Private Function GetCustomerDataTable() As DataTable
+			Dim table As New DataTable()
+			table.TableName = "Customers"
+			table.Columns.Add(New DataColumn("Items", GetType(String)))
+			table.Columns.Add(New DataColumn("Money", GetType(Double)))
+			table.Columns.Add(New DataColumn("ID", GetType(Integer)))
+			For i As Integer = 0 To 9
+				table.Rows.Add("Product " & i, 3000 + i * 298.55D, i)
+			Next i
+			Return table
+		End Function
+		Private customers As DataTable
 		Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
-			sqlDataAdapter1.Fill(dataSet11)
-			cardView1.PopulateColumns(dataSet11.Customers)
+			customers = GetCustomerDataTable()
+			gridControl1.DataSource = customers
+			cardView1.PopulateColumns(customers)
 		End Sub
 
 		Private Sub gridView1_MasterRowEmpty(ByVal sender As Object, ByVal e As DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs) Handles gridView1.MasterRowEmpty
@@ -166,7 +145,7 @@ Namespace WindowsApplication87
 		End Sub
 
 		Private Sub gridView1_MasterRowGetChildList(ByVal sender As Object, ByVal e As DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs) Handles gridView1.MasterRowGetChildList
-			Dim clone As DataTable = dataSet11.Customers.Clone()
+			Dim clone As DataTable = customers.Clone()
 			Dim row As DataRow = gridView1.GetDataRow(e.RowHandle)
 			clone.Rows.Add(row.ItemArray)
 			e.ChildList = clone.DefaultView
